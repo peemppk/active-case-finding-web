@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { FormsModule } from '@angular/forms';
+import { AlertService } from '../alert.service';
 
 @NgModule({
   imports: [
@@ -18,5 +19,6 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     LoginComponent
   ],
+  providers: [AlertService]
 })
 export class LoginModule { }

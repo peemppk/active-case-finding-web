@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +9,34 @@ export class HomeComponent implements OnInit {
   name: any;
   lastname: any;
   gender: any;
+  telephone: any;
+  year: any;
 
-  tambon: any = ['Banplaw', 'Banprik'];
-  ampur: any = ['Banna', 'Mueng'];
-  province: any = ['Nakhon Nayok', 'Buriram'];
+  tambonName: any;
+  ampurName: any;
+  provinceName: any;
 
-  constructor() { }
+  tambon: any = [{ name: 'Banplaw' }, { name: 'Banprik' }];
+  ampur: any = [{ name: 'Banna' }, { name: 'Mueng' }];
+  province: any = [{ name: 'Nakhon Nayok' }, { name: 'Buriram' }];
+
+  modal: any = false;
+
+  constructor(
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
+  }
+
+  async submit() {
+    this.modal = true;
+    console.log(this.name, this.lastname, this.gender, this.telephone, this.year, this.tambon, this.ampur, this.province);
+  }
+
+  async confirm() {
+    this.alertService.success();
+    this.modal = false;
   }
 
 }

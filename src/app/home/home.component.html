@@ -1,14 +1,12 @@
-<div class="card" style="padding: 0; margin: 0;">
+<div class="card">
   <div class="card-block">
     <div class="clr-row">
       <div class="clr-col-3">
         <label style="font-weight: bold;">{{'Name' | translate}}</label>
       </div>
       <div class="clr-col-9">
-        <form class="clr-form">
-          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Name' | translate}}" class="clr-input"
-            required />
-        </form>
+        <input type="text" style="width: 100%;" placeholder="{{'Name' | translate}}" class="clr-input"
+          [(ngModel)]="name" required />
       </div>
     </div>
     <div class="clr-row">
@@ -16,21 +14,22 @@
         <label style="font-weight: bold;">{{'Lastname' | translate}}</label>
       </div>
       <div class="clr-col-9">
-        <form class="clr-form">
-          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
-            required />
-        </form>
+        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
+          [(ngModel)]="lastname" required />
       </div>
     </div>
     <div class="clr-row">
       <div class="clr-col-12">
         <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}}</label>
         <div class="clr-control-container clr-control-inline">
-          <input type="radio" id="vertical-radio1" name="radio-full" value="option1" class="clr-radio" />
+          <input type="radio" id="vertical-radio1" name="radio-full" value="male" class="clr-radio"
+            [(ngModel)]="gender" />
           <label>{{'Male' | translate}}</label>
-          <input type="radio" id="vertical-radio2" name="radio-full" value="option2" class="clr-radio" />
+          <input type="radio" id="vertical-radio2" name="radio-full" value="female" class="clr-radio"
+            [(ngModel)]="gender" />
           <label>{{'Female' | translate}}</label>
-          <input type="radio" id="vertical-radio3" name="radio-full" value="option3" class="clr-radio" />
+          <input type="radio" id="vertical-radio3" name="radio-full" value="other" class="clr-radio"
+            [(ngModel)]="gender" />
           <label>{{'Other' | translate}}</label>
         </div>
       </div>
@@ -40,10 +39,8 @@
         <label style="font-weight: bold;">{{'Year of Birth' | translate}}</label>
       </div>
       <div class="clr-col-7">
-        <form class="clr-form">
-          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Year of Birth' | translate}}"
-            class="clr-input" />
-        </form>
+        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Year of Birth' | translate}}"
+          class="clr-input" [(ngModel)]="year" />
       </div>
     </div>
     <div class="clr-row">
@@ -51,8 +48,8 @@
         <label style="font-weight: bold;">{{'Tambon' | translate}}</label>
       </div>
       <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="tambon" [(ngModel)]="tambon">
-          <option *ngFor="let v of tambon" [value]="code">{{v}}</option>
+        <select class="clr-select" name="tambon" [(ngModel)]="tambonName">
+          <option *ngFor="let v of tambon" [value]="v.name">{{v.name}}</option>
         </select>
       </div>
     </div>
@@ -61,8 +58,8 @@
         <label style="font-weight: bold;">{{'Ampur' | translate}}</label>
       </div>
       <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="ampur" [(ngModel)]="ampur">
-          <option *ngFor="let v of ampur" [value]="code">{{v}}</option>
+        <select class="clr-select" name="ampur" [(ngModel)]="ampurName">
+          <option *ngFor="let v of ampur" [value]="v.name">{{v.name}}</option>
         </select>
       </div>
     </div>
@@ -71,8 +68,8 @@
         <label style="font-weight: bold;">{{'Province' | translate}}</label>
       </div>
       <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="province" [(ngModel)]="province">
-          <option *ngFor="let v of province" [value]="code">{{v}}</option>
+        <select class="clr-select" name="province" [(ngModel)]="provinceName">
+          <option *ngFor="let v of province" [value]="v.name">{{v.name}}</option>
         </select>
       </div>
     </div>
@@ -81,10 +78,8 @@
         <label style="font-weight: bold;">{{'Telephone' | translate}}</label>
       </div>
       <div class="clr-col-9">
-        <form class="clr-form">
-          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
-            required />
-        </form>
+        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
+          [(ngModel)]="telephone" required />
       </div>
     </div>
     <div class="clr-row">
@@ -124,8 +119,54 @@
     </div>
     <div class="clr-row" style="text-align: center; padding-top: 10px;">
       <div class="clr-col-12">
-        <button class="btn btn-success btn-sm">{{'Save' | translate}}</button>
+        <button class="btn btn-success btn-sm" (click)="submit()">{{'Save' | translate}}</button>
       </div>
     </div>
   </div>
 </div>
+
+<clr-modal [(clrModalOpen)]="modal" [style.height.px]="500">
+  <h3 class="modal-title">{{'Confirm' | translate}}</h3>
+  <div class="modal-body">
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Name' | translate}} {{name}} {{lastname}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Gender' | translate}} {{gender}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Year' | translate}} {{year}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Tambon' | translate}} {{tambonName}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Ampur' | translate}} {{ampurName}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Province' | translate}} {{provinceName}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Telephone' | translate}} {{telephone}}
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="!name || !lastname || !telephone || !gender"
+      (click)="confirm()">{{'Confirm' | translate}}</button>
+    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancle' | translate}}</button>
+  </div>
+</clr-modal>
