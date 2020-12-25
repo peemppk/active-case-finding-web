@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../alert.service';
 
@@ -24,10 +25,15 @@ export class HomeComponent implements OnInit {
   modal: any = false;
 
   constructor(
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: Router
   ) { }
 
   ngOnInit() {
+  }
+
+  onClickChangeLangue() {
+    this.route.navigate(['langual']);
   }
 
   async submit() {

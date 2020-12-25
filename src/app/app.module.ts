@@ -9,12 +9,14 @@ import { LoginModule } from './login/login.module';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from './translate.pipe';
+import { LangualComponent } from './langual/langual.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TranslatePipe
+    TranslatePipe,
+    LangualComponent
   ],
   imports: [
     FormsModule,
