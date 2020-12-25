@@ -2,7 +2,7 @@
   <div class="card-block">
     <div class="clr-row">
       <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Name' | translate}}</label>
+        <div style="font-weight: bold;">{{'Name' | translate}} <label style="color: red;">*</label></div>
       </div>
       <div class="clr-col-9">
         <input type="text" style="width: 100%;" placeholder="{{'Name' | translate}}" class="clr-input"
@@ -10,17 +10,17 @@
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Lastname' | translate}}</label>
+      <div class="clr-col-4">
+        <div style="font-weight: bold;">{{'Lastname' | translate}} <label style="color: red;">*</label></div>
       </div>
-      <div class="clr-col-9">
+      <div class="clr-col-8">
         <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
           [(ngModel)]="lastname" required />
       </div>
     </div>
     <div class="clr-row">
       <div class="clr-col-12">
-        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}}</label>
+        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <label style="color: red;">*</label></label>
         <div class="clr-control-container clr-control-inline">
           <input type="radio" id="vertical-radio1" name="radio-full" value="male" class="clr-radio"
             [(ngModel)]="gender" />
@@ -74,10 +74,10 @@
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Telephone' | translate}}</label>
+      <div class="clr-col-5">
+        <label style="font-weight: bold;">{{'Telephone' | translate}} <label style="color: red;">*</label></label>
       </div>
-      <div class="clr-col-9">
+      <div class="clr-col-7">
         <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
           [(ngModel)]="telephone" required />
       </div>
@@ -121,7 +121,7 @@
     </div>
     <div class="clr-row" style="text-align: center; padding-top: 10px;">
       <div class="clr-col-12">
-        <button class="btn btn-success btn-sm" (click)="submit()">{{'Save' | translate}}</button>
+        <button class="btn btn-success btn-sm" [disabled]="!name || !lastname || !telephone || !gender" (click)="submit()">{{'Save' | translate}}</button>
       </div>
     </div>
   </div>
@@ -167,8 +167,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" [disabled]="!name || !lastname || !telephone || !gender"
-      (click)="confirm()">{{'Confirm' | translate}}</button>
-    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancle' | translate}}</button>
+    <button type="button" class="btn btn-success" (click)="confirm()">{{'Confirm' | translate}}</button>
+    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancel' | translate}}</button>
   </div>
 </clr-modal>

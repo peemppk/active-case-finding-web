@@ -36,15 +36,30 @@ export class HomeComponent implements OnInit {
   }
 
   async confirm() {
-    this.alertService.success();
-    this.modal = false;
+    try {
+      this.alertService.success();
+      this.clearForm();
+      this.modal = false;
+    } catch (error) {
+      this.clearForm();
+      this.modal = false;
+    }
   }
 
   onChangeImage(e) {
-    
   }
 
   onChangeDoc(e) {
+  }
 
+  clearForm() {
+    this.name = null;
+    this.lastname = null;
+    this.telephone = null;
+    this.year = null;
+    this.gender = null;
+    this.tambonName = null;
+    this.ampurName = null;
+    this.provinceName = null;
   }
 }
