@@ -1,0 +1,21 @@
+<div class="main-container">
+  <div class="wrapper">
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <div class="clr-row">
+          <div class="clr-col-12">
+            <form class="clr-form">
+              <input type="text" id="basic" placeholder="เบอร์โทรศัทพ์" class="clr-input" />
+              <button style="margin-left: 10px;" class="btn btn-success">ส่ง OTP</button>
+            </form>
+          </div>
+        </div>
+        <div class="clr-row">
+          <div class="clr-col-12">
+            <input type="text" (keyup)="otp()" maxlength="6" id="basic" placeholder="ระบุ OTP" class="clr-input" [(ngModel)]="key" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

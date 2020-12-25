@@ -1,0 +1,131 @@
+<div class="card" style="padding: 0; margin: 0;">
+  <div class="card-block">
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Name' | translate}}</label>
+      </div>
+      <div class="clr-col-9">
+        <form class="clr-form">
+          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Name' | translate}}" class="clr-input"
+            required />
+        </form>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Lastname' | translate}}</label>
+      </div>
+      <div class="clr-col-9">
+        <form class="clr-form">
+          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
+            required />
+        </form>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}}</label>
+        <div class="clr-control-container clr-control-inline">
+          <input type="radio" id="vertical-radio1" name="radio-full" value="option1" class="clr-radio" />
+          <label>{{'Male' | translate}}</label>
+          <input type="radio" id="vertical-radio2" name="radio-full" value="option2" class="clr-radio" />
+          <label>{{'Female' | translate}}</label>
+          <input type="radio" id="vertical-radio3" name="radio-full" value="option3" class="clr-radio" />
+          <label>{{'Other' | translate}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label style="font-weight: bold;">{{'Year of Birth' | translate}}</label>
+      </div>
+      <div class="clr-col-7">
+        <form class="clr-form">
+          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Year of Birth' | translate}}"
+            class="clr-input" />
+        </form>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Tambon' | translate}}</label>
+      </div>
+      <div class="clr-col-9" class="clr-select-wrapper">
+        <select class="clr-select" name="tambon" [(ngModel)]="tambon">
+          <option *ngFor="let v of tambon" [value]="code">{{v}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Ampur' | translate}}</label>
+      </div>
+      <div class="clr-col-9" class="clr-select-wrapper">
+        <select class="clr-select" name="ampur" [(ngModel)]="ampur">
+          <option *ngFor="let v of ampur" [value]="code">{{v}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Province' | translate}}</label>
+      </div>
+      <div class="clr-col-9" class="clr-select-wrapper">
+        <select class="clr-select" name="province" [(ngModel)]="province">
+          <option *ngFor="let v of province" [value]="code">{{v}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Telephone' | translate}}</label>
+      </div>
+      <div class="clr-col-9">
+        <form class="clr-form">
+          <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
+            required />
+        </form>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-4">
+        <label style="font-weight: bold;">
+          Face Capture
+        </label>
+      </div>
+      <div class="clr-col-8">
+        <button class="btn btn-primary btn-outline btn-sm">
+          <input type="file" #fileInput style="display: none;" (change)="fileChangeEvent($event)">
+          {{'Camera' | translate}}<clr-icon shape="image"></clr-icon>
+        </button>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-6">
+        <label style="font-weight: bold;">{{'Document Type' | translate}}</label>
+      </div>
+      <div class="clr-col-6" class="clr-select-wrapper">
+        <select class="clr-select" name="doctype" [(ngModel)]="doctype">
+          <option [value]="code">Indentify Card</option>
+          <option [value]="code">Picture</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-4">
+        <label style="font-weight: bold;">{{'Document' | translate}}</label>
+      </div>
+      <div class="clr-col-8">
+        <button class="btn btn-primary btn-outline btn-sm">
+          <input type="file" #fileInput style="display: none;" (change)="fileChangeEvent($event)">
+          {{'Browse' | translate}}<clr-icon shape="image"></clr-icon>
+        </button>
+      </div>
+    </div>
+    <div class="clr-row" style="text-align: center; padding-top: 10px;">
+      <div class="clr-col-12">
+        <button class="btn btn-success btn-sm">{{'Save' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
