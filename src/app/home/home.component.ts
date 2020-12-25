@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   gender: any;
   telephone: any;
   year: any;
+  doctype: any;
 
   tambonName: any;
   ampurName: any;
