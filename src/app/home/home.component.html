@@ -83,16 +83,17 @@
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-4">
+      <div class="clr-col-6">
         <label style="font-weight: bold;">
           Face Capture
         </label>
       </div>
-      <div class="clr-col-8">
-        <button class="btn btn-primary btn-outline btn-sm">
-          <input type="file" #fileInput style="display: none;">
+      <div class="clr-col-6">
+        <label class="btn btn-primary btn-outline btn-sm">
+          <input type="file" accept="image/jpeg,image/jpg,image/png" style="display: none;"
+            (change)="onChangeImage($event)" accept='image/jpeg,image/jpg,image/png'>
           {{'Camera' | translate}}<clr-icon shape="image"></clr-icon>
-        </button>
+        </label>
       </div>
     </div>
     <div class="clr-row">
@@ -107,14 +108,15 @@
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-4">
+      <div class="clr-col-6">
         <label style="font-weight: bold;">{{'Document' | translate}}</label>
       </div>
-      <div class="clr-col-8">
-        <button class="btn btn-primary btn-outline btn-sm">
-          <input type="file" #fileInput style="display: none;">
+      <div class="clr-col-6">
+        <label class="btn btn-primary btn-outline btn-sm">
+          <input type="file" #file accept="image/jpeg,image/jpg,image/png" style="display: none;"
+            (change)="onChangeDoc($evnet)" accept='image/jpeg,image/jpg,image/png'>
           {{'Browse' | translate}}<clr-icon shape="image"></clr-icon>
-        </button>
+        </label>
       </div>
     </div>
     <div class="clr-row" style="text-align: center; padding-top: 10px;">

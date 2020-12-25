@@ -40,4 +40,11 @@ export class HomeComponent implements OnInit {
     this.modal = false;
   }
 
+  onChangeImage(e) {
+    
+  }
+
+  onChangeDoc(e) {
+
+  }
 }
