@@ -168,7 +168,7 @@
       </div>
 
       <div class="clr-col-5">
-        <label style="font-weight: bold;">{{'Telephoneboss' | translate}}></label>
+        <label style="font-weight: bold;">{{'Telephoneboss' | translate}}</label>
       </div>
 
       <div class="clr-col-7">
@@ -285,9 +285,12 @@
       <div class="clr-col-3">
         {{'OTP' | translate}}
       </div>
-      <div class="clr-col-9">
+      <div class="clr-col-7">
         <input maxlength="6" type="text" style="width: 100%;" placeholder="{{'Confirm OTP' | translate}}"
           class="clr-input" [(ngModel)]="otp" />
+      </div>
+      <div class="clr-col-2">
+        {{otpRef||''}}
       </div>
     </div>
   </div>

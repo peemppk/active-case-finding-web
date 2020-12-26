@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertService } from '../alert.service';
 import { StandardService } from '../standard.service';
 import { filter, findIndex } from 'lodash';
+import { CameraComponent } from '../camera/camera.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   gender: any;
   telephone: any;
   telephoneBoss: any;
+  otpRef: any;
   year: any;
   doctype: any;
   NationalityType: any = 6;
@@ -48,7 +50,7 @@ export class HomeComponent implements OnInit {
 
   otpPass: any = {};
   language: any;
-
+  @ViewChild('camera') camera: CameraComponent;
   constructor(
     private alertService: AlertService,
     private standardService: StandardService,
@@ -122,6 +124,8 @@ export class HomeComponent implements OnInit {
       const rs: any = await this.standardService.otp(this.telephone);
       console.log(rs);
       if (rs.ok) {
+        this.otpRef = rs.otp_ref;
+        this.otpPass.telephone = rs.phone_number;
         this.otpPass.telephone = rs.phone_number;
         this.otpPass.transactionId = rs.transaction_id;
         this.otpPass.vendor = rs.vendor;
@@ -230,10 +234,10 @@ export class HomeComponent implements OnInit {
   }
 
   onClickOpenCamera() {
-
+    this.camera.openWebcam();
   }
 
-  onSaveFile(e){
+  onSaveFile(e) {
 
   }
 }
