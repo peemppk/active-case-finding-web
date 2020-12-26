@@ -7,8 +7,10 @@ import { AlertService } from '../alert.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  name: any;
-  lastname: any;
+  idcard: any;
+  titleName: any;
+  firstName: any;
+  lastName: any;
   gender: any;
   telephone: any;
   year: any;
@@ -38,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   async submit() {
     this.modal = true;
-    console.log(this.name, this.lastname, this.gender, this.telephone, this.year, this.tambon, this.ampur, this.province);
+    console.log(this.firstName, this.lastName, this.gender, this.telephone, this.year, this.tambonName, this.ampurName, this.provinceName);
   }
 
   async confirm() {
@@ -59,8 +61,10 @@ export class HomeComponent implements OnInit {
   }
 
   clearForm() {
-    this.name = null;
-    this.lastname = null;
+    this.idcard = null;
+    this.titleName = null;
+    this.firstName = null;
+    this.lastName = null;
     this.telephone = null;
     this.year = null;
     this.gender = null;

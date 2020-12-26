@@ -5,11 +5,32 @@
   <div class="card-block">
     <div class="clr-row">
       <div class="clr-col-3">
-        <div style="font-weight: bold;">{{'Name' | translate}} <label style="color: red;">*</label></div>
+        <div style="font-weight: bold;">{{'ID Card' | translate}}</div>
       </div>
       <div class="clr-col-9">
-        <input type="text" style="width: 100%;" placeholder="{{'Name' | translate}}" class="clr-input"
-          [(ngModel)]="name" required />
+        <input type="text" style="width: 100%;" placeholder="{{'ID Card' | translate}}" class="clr-input"
+          [(ngModel)]="idcard" required />
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        <label style="font-weight: bold;">{{'Title' | translate}}</label>
+      </div>
+      <div class="clr-col-9" class="clr-select-wrapper">
+        <select class="clr-select" name="titleName" [(ngModel)]="titleName">
+          <option selected value="นาย">{{'Mr.' | translate}}</option>
+          <option value="นาง">{{'Mrs.' | translate}}</option>
+          <option value="นางสาว">{{'Miss' | translate}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-4">
+        <div style="font-weight: bold;">{{'Firstname' | translate}} <label style="color: red;">*</label></div>
+      </div>
+      <div class="clr-col-8">
+        <input type="text" style="width: 100%;" placeholder="{{'First Name' | translate}}" class="clr-input"
+          [(ngModel)]="firstName" required />
       </div>
     </div>
     <div class="clr-row">
@@ -18,12 +39,13 @@
       </div>
       <div class="clr-col-8">
         <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
-          [(ngModel)]="lastname" required />
+          [(ngModel)]="lastName" required />
       </div>
     </div>
     <div class="clr-row">
       <div class="clr-col-12">
-        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <label style="color: red;">*</label></label>
+        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <label
+            style="color: red;">*</label></label>
         <div class="clr-control-container clr-control-inline">
           <input type="radio" id="vertical-radio1" name="radio-full" value="male" class="clr-radio"
             [(ngModel)]="gender" />
@@ -105,8 +127,8 @@
       </div>
       <div class="clr-col-6" class="clr-select-wrapper">
         <select class="clr-select" name="doctype" [(ngModel)]="doctype">
-          <option>Indentify Card</option>
-          <option>Picture</option>
+          <option value="idcard">ID Card</option>
+          <option value="picture">Picture</option>
         </select>
       </div>
     </div>
@@ -124,7 +146,8 @@
     </div>
     <div class="clr-row" style="text-align: center; padding-top: 10px;">
       <div class="clr-col-12">
-        <button class="btn btn-success btn-sm" [disabled]="!name || !lastname || !telephone || !gender" (click)="submit()">{{'Save' | translate}}</button>
+        <button class="btn btn-success btn-sm" [disabled]="!name || !lastname || !telephone || !gender"
+          (click)="submit()">{{'Save' | translate}}</button>
       </div>
     </div>
   </div>
