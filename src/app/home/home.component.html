@@ -17,7 +17,7 @@
         <label style="font-weight: bold;">{{'Lastname' | translate}}</label>
       </div>
       <div class="clr-col-9">
-        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
+        <input type="text" style="width: 100%;"  placeholder="{{'Lastname' | translate}}" class="clr-input"
           [(ngModel)]="lastname" required />
       </div>
     </div>
@@ -39,10 +39,10 @@
     </div>
     <div class="clr-row">
       <div class="clr-col-5">
-        <label style="font-weight: bold;">{{'Year of Birth' | translate}}</label>
+        <label style="font-weight: bold;">{{'Year_of_birth' | translate}}</label>
       </div>
       <div class="clr-col-7">
-        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Year of Birth' | translate}}"
+        <input type="text" style="width: 100%;"  placeholder="{{'Year of Birth' | translate}}"
           class="clr-input" [(ngModel)]="year" />
       </div>
     </div>
@@ -81,7 +81,7 @@
         <label style="font-weight: bold;">{{'Telephone' | translate}}</label>
       </div>
       <div class="clr-col-9">
-        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
+        <input type="text" style="width: 100%;"  placeholder="{{'Telephone' | translate}}" class="clr-input"
           [(ngModel)]="telephone" required />
       </div>
     </div>
@@ -172,6 +172,6 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-success" [disabled]="!name || !lastname || !telephone || !gender"
       (click)="confirm()">{{'Confirm' | translate}}</button>
-    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancle' | translate}}</button>
+    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancel' | translate}}</button>
   </div>
 </clr-modal>

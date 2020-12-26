@@ -1,3 +1,4 @@
+import { TranslationService } from './translation.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,13 +11,15 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from './translate.pipe';
 import { LangualComponent } from './langual/langual.component';
+import { TranslateDirective } from './translate.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TranslatePipe,
-    LangualComponent
+    LangualComponent,
+    TranslateDirective
   ],
   imports: [
     FormsModule,
@@ -26,7 +29,9 @@ import { LangualComponent } from './langual/langual.component';
     LoginModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    TranslationService
+  ],
   bootstrap: [AppComponent],
   exports: [TranslatePipe]
 })
