@@ -1,4 +1,5 @@
 export const TH = {
+    'Firstname': 'ชื่อ',
     'Name': 'ชื่อ',
     'Lastname': 'นามสกุล',
     'Gender': 'เพศ',
@@ -16,6 +17,11 @@ export const TH = {
     'Document': 'Document',
     'Save': 'Save',
     'Confirm': 'Confirm',
-    'Cancel': 'Cancel'
+    'Cancel': 'Cancel',
+    'Telephoneboss':'เบอร์โทรศัพท์ นายจ้าง',
+    'Nationality':'สัญชาติ',
+    'Passport':'พาสปอร์ท',
+    'Thai':'ไทย',
+    'Foreign':'ต่างชาติ'
 
 };
