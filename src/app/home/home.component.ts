@@ -148,6 +148,7 @@ export class HomeComponent implements OnInit {
         }
         this.modal = false;
       } else {
+        this.otp = null;
         this.alertService.error('OTP ไม่ถูกต้อง');
         this.modal = false;
       }
