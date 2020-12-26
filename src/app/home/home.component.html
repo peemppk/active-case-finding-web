@@ -4,40 +4,85 @@
 <div class="card">
   <div class="card-block">
     <div class="clr-row">
-      <div class="clr-col-3">
-        <div style="font-weight: bold;">{{'ID Card' | translate}}</div>
+      <div class="clr-col-4">
+        <label style="font-weight: bold;">Nationality</label>
       </div>
-      <div class="clr-col-9">
-        <input type="text" style="width: 100%;" placeholder="{{'ID Card' | translate}}" class="clr-input"
-          [(ngModel)]="idcard" required />
+      <div class="clr-col-4">
+        <input style="margin: 5px;" type="radio" name="nationality" value="THAI" class="clr-radio"
+          [(ngModel)]="nationality" />
+        <label>{{'Thai' | translate}}</label>
+      </div>
+      <div class="clr-col-4">
+        <input style="margin: 5px;" type="radio" name="nationality" value="FOREIGN" class="clr-radio"
+          [(ngModel)]="nationality" />
+        <label>{{'Foreign' | translate}}</label>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Title' | translate}}</label>
+      <div class="clr-col-12">
+        <input maxlength="13" *ngIf="nationality === 'THAI'" type="text" style="width: 100%;"
+          placeholder="{{'ID Card' | translate}}" class="clr-input" [(ngModel)]="idcard" required />
+        <input maxlength="13" *ngIf="nationality === 'FOREIGN'" type="text" style="width: 100%;"
+          placeholder="{{'ID Card Foreign' | translate}}" class="clr-input" [(ngModel)]="idforeign" required />
       </div>
-      <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="titleName" [(ngModel)]="titleName">
-          <option selected value="นาย">{{'Mr.' | translate}}</option>
-          <option value="นาง">{{'Mrs.' | translate}}</option>
-          <option value="นางสาว">{{'Miss' | translate}}</option>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <div style="font-weight: bold;">{{'Nationaltype' | translate}} <label style="color: red;">*</label></div>
+      </div>
+      <div class="clr-col-7" class="clr-select-wrapper">
+        <select class="clr-select" name="NationalityType" [(ngModel)]="NationalityType">
+          <option value="6">{{'Thai' | translate}}</option>
+          <option value="3">{{'Stateless' | translate}}</option>
+          <option value="1">{{'Foreign Passport' | translate}}</option>
+          <option value="5">{{'Escape' | translate}}</option>
+          <option value="2">{{'Two Nation' | translate}}</option>
+          <option value="7">{{'Child' | translate}}</option>
+          <option value="4">{{'Other' | translate}}</option>
         </select>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-4">
+      <div class="clr-col-12">
+        <div style="font-weight: bold;">{{'Passport' | translate}}</div>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <input maxlength="10" type="text" style="width: 100%;" placeholder="{{'Passport' | translate}}"
+          class="clr-input" [(ngModel)]="passport" required />
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label style="font-weight: bold;">{{'Title' | translate}}</label>
+      </div>
+      <div class="clr-col-7" class="clr-select-wrapper">
+        <select class="clr-select" name="titleName" [(ngModel)]="titleName">
+          <option value="Mr.">{{'Mr.' | translate}}</option>
+          <option value="Mrs.">{{'Mrs.' | translate}}</option>
+          <option value="Miss">{{'Miss' | translate}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
         <div style="font-weight: bold;">{{'Firstname' | translate}} <label style="color: red;">*</label></div>
       </div>
-      <div class="clr-col-8">
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
         <input type="text" style="width: 100%;" placeholder="{{'First Name' | translate}}" class="clr-input"
           [(ngModel)]="firstName" required />
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-4">
+      <div class="clr-col-12">
         <div style="font-weight: bold;">{{'Lastname' | translate}} <label style="color: red;">*</label></div>
       </div>
-      <div class="clr-col-8">
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
         <input type="text" style="width: 100%;" id="basic" placeholder="{{'Lastname' | translate}}" class="clr-input"
           [(ngModel)]="lastName" required />
       </div>
@@ -46,86 +91,108 @@
       <div class="clr-col-12">
         <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <label
             style="color: red;">*</label></label>
-        <div class="clr-control-container clr-control-inline">
-          <input type="radio" id="vertical-radio1" name="radio-full" value="male" class="clr-radio"
-            [(ngModel)]="gender" />
-          <label>{{'Male' | translate}}</label>
-          <input type="radio" id="vertical-radio2" name="radio-full" value="female" class="clr-radio"
-            [(ngModel)]="gender" />
-          <label>{{'Female' | translate}}</label>
-          <input type="radio" id="vertical-radio3" name="radio-full" value="other" class="clr-radio"
-            [(ngModel)]="gender" />
-          <label>{{'Other' | translate}}</label>
-        </div>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-5">
-        <label style="font-weight: bold;">{{'Year of Birth' | translate}}</label>
-      </div>
-      <div class="clr-col-7">
-        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Year of Birth' | translate}}"
-          class="clr-input" [(ngModel)]="year" />
-      </div>
-    </div>
-    <div class="clr-row">
-      <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Tambon' | translate}}</label>
-      </div>
-      <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="tambon" [(ngModel)]="tambonName">
-          <option *ngFor="let v of tambon" [value]="v.name">{{v.name}}</option>
-        </select>
+      <div class="clr-col-12">
+        <input style="margin: 5px;" type="radio" name="gender" value="male" class="clr-radio" [(ngModel)]="gender" />
+        <label>{{'Male' | translate}}</label>
+        <input style="margin: 5px;" type="radio" name="gender" value="female" class="clr-radio" [(ngModel)]="gender" />
+        <label>{{'Female' | translate}}</label>
+        <input style="margin: 5px;" type="radio" name="gender" value="other" class="clr-radio" [(ngModel)]="gender" />
+        <label>{{'Other' | translate}}</label>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-3">
-        <label style="font-weight: bold;">{{'Ampur' | translate}}</label>
-      </div>
-      <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="ampur" [(ngModel)]="ampurName">
-          <option *ngFor="let v of ampur" [value]="v.name">{{v.name}}</option>
-        </select>
+      <div class="clr-col-12">
+        <label style="font-weight: bold;">{{'Year_of_birth' | translate}}</label>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-3">
+      <div class="clr-col-12">
+        <input type="text" style="width: 100%;" placeholder="{{'Year of Birth' | translate}}" class="clr-input"
+          [(ngModel)]="year" />
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
         <label style="font-weight: bold;">{{'Province' | translate}}</label>
       </div>
-      <div class="clr-col-9" class="clr-select-wrapper">
-        <select class="clr-select" name="province" [(ngModel)]="provinceName">
-          <option *ngFor="let v of province" [value]="v.name">{{v.name}}</option>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12" style="padding-left: 10px;" class="clr-select-wrapper">
+        <select class="clr-select" name="province" [(ngModel)]="provinceCode" (change)="onChangeProvince()">
+          <option *ngFor="let v of province" [value]="v.code">{{v.name_en}}</option>
         </select>
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-5">
+      <div class="clr-col-12">
+        <label style="font-weight: bold;">{{'District' | translate}}</label>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12" style="padding-left: 10px;" class="clr-select-wrapper">
+        <select [disabled]="!provinceCode" class="clr-select" name="district" [(ngModel)]="districtCode"
+          (change)="onChangeDistrict()">
+          <option *ngFor="let v of districtFilter" [value]="v.code">{{v.name_th}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <label style="font-weight: bold;">{{'Subdistrict' | translate}}</label>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12" style="padding-left: 10px;" class="clr-select-wrapper">
+        <select [disabled]="!districtCode" class="clr-select" name="subdistrict" [(ngModel)]="subDistrictCode"
+          (change)="onChangeSubDistrict()">
+          <option *ngFor="let v of subDistrictFilter" [value]="v.code">{{v.name_en}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
         <label style="font-weight: bold;">{{'Telephone' | translate}} <label style="color: red;">*</label></label>
       </div>
-      <div class="clr-col-7">
-        <input type="text" style="width: 100%;" id="basic" placeholder="{{'Telephone' | translate}}" class="clr-input"
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <input type="text" style="width: 100%;" placeholder="{{'Telephone' | translate}}" class="clr-input"
           [(ngModel)]="telephone" required />
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-6">
+      <div class="clr-col-12">
+        <label style="font-weight: bold;">{{'Telephoneboss' | translate}} <label style="color: red;">*</label></label>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <input type="text" style="width: 100%;" placeholder="{{'Telephoneboss' | translate}}" class="clr-input"
+          [(ngModel)]="telephoneBoss" required />
+      </div>
+    </div>
+    <!-- <div class="clr-row">
+      <div class="clr-col-5">
         <label style="font-weight: bold;">
           Face Capture
         </label>
       </div>
-      <div class="clr-col-6">
+      <div class="clr-col-7">
         <label class="btn btn-primary btn-outline btn-sm">
           <input type="file" accept="image/jpeg,image/jpg,image/png" style="display: none;"
             (change)="onChangeImage($event)" accept='image/jpeg,image/jpg,image/png'>
           {{'Camera' | translate}}<clr-icon shape="image"></clr-icon>
         </label>
       </div>
-    </div>
-    <div class="clr-row">
-      <div class="clr-col-6">
-        <label style="font-weight: bold;">{{'Document Type' | translate}}</label>
+    </div> -->
+    <!-- <div class="clr-row">
+      <div class="clr-col-5">
+        <label style="font-weight: bold;">{{'Documenttype' | translate}}</label>
       </div>
-      <div class="clr-col-6" class="clr-select-wrapper">
+      <div class="clr-col-7" class="clr-select-wrapper">
         <select class="clr-select" name="doctype" [(ngModel)]="doctype">
           <option value="idcard">ID Card</option>
           <option value="picture">Picture</option>
@@ -133,32 +200,48 @@
       </div>
     </div>
     <div class="clr-row">
-      <div class="clr-col-6">
+      <div class="clr-col-5">
         <label style="font-weight: bold;">{{'Document' | translate}}</label>
       </div>
-      <div class="clr-col-6">
+      <div class="clr-col-7">
         <label class="btn btn-primary btn-outline btn-sm">
           <input type="file" #file accept="image/jpeg,image/jpg,image/png" style="display: none;"
             (change)="onChangeDoc($event)" accept='image/jpeg,image/jpg,image/png'>
           {{'Browse' | translate}}<clr-icon shape="image"></clr-icon>
         </label>
       </div>
-    </div>
+    </div> -->
     <div class="clr-row" style="text-align: center; padding-top: 10px;">
       <div class="clr-col-12">
-        <button class="btn btn-success btn-sm" [disabled]="!name || !lastname || !telephone || !gender"
-          (click)="submit()">{{'Save' | translate}}</button>
+        <button class="btn btn-primary btn-sm btn-outline"
+          [disabled]="!firstName || !lastName || !telephone || !telephoneBoss || !gender" (click)="submit()">{{'Next' |
+          translate}}</button>
       </div>
     </div>
   </div>
 </div>
 
-<clr-modal [(clrModalOpen)]="modal" [style.height.px]="500">
+<clr-modal [(clrModalOpen)]="modal" [style.height.px]="500" [clrModalClosable]="false">
   <h3 class="modal-title">{{'Confirm' | translate}}</h3>
   <div class="modal-body">
+    <div *ngIf="nationality" class="clr-row">
+      <div class="clr-col-12">
+        {{'Nationality' | translate}} {{nationality}}
+      </div>
+    </div>
+    <div *ngIf="passport" class="clr-row">
+      <div class="clr-col-12">
+        {{'Passport' | translate}} {{passport}}
+      </div>
+    </div>
+    <div *ngIf="idcard || idforeign" class="clr-row">
+      <div class="clr-col-12">
+        {{'ID' | translate}} {{idcard}}{{idforeign}}
+      </div>
+    </div>
     <div class="clr-row">
       <div class="clr-col-12">
-        {{'Name' | translate}} {{name}} {{lastname}}
+        {{'Name' | translate}} {{titleName}}{{firstName}} {{lastName}}
       </div>
     </div>
     <div class="clr-row">
@@ -173,17 +256,17 @@
     </div>
     <div class="clr-row">
       <div class="clr-col-12">
-        {{'Tambon' | translate}} {{tambonName}}
-      </div>
-    </div>
-    <div class="clr-row">
-      <div class="clr-col-12">
-        {{'Ampur' | translate}} {{ampurName}}
-      </div>
-    </div>
-    <div class="clr-row">
-      <div class="clr-col-12">
         {{'Province' | translate}} {{provinceName}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'District' | translate}} {{districtName}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        {{'Subdistrict' | translate}} {{subDistrictName}}
       </div>
     </div>
     <div class="clr-row">
@@ -191,9 +274,66 @@
         {{'Telephone' | translate}} {{telephone}}
       </div>
     </div>
+    <div *ngIf="telephoneBoss" class="clr-row">
+      <div class="clr-col-12">
+        {{'Telephoneboss' | translate}} {{telephoneBoss}}
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-3">
+        {{'OTP' | translate}}
+      </div>
+      <div class="clr-col-9">
+        <input maxlength="6" type="text" style="width: 100%;" placeholder="{{'Confirm OTP' | translate}}"
+          class="clr-input" [(ngModel)]="otp" />
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="confirm()">{{'Confirm' | translate}}</button>
-    <button type="button" class="btn btn-danger" (click)="modal = false">{{'Cancel' | translate}}</button>
+    <button type="button" [disabled]="!otp" class="btn btn-primary btn-sm" (click)="confirm()">{{'Next' |
+      translate}}</button>
+    <button type="button" class="btn btn-danger btn-sm" (click)="modal = false">{{'Cancel' | translate}}</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="modalDoc" [style.height.px]="500" [clrModalClosable]="false">
+  <h3 class="modal-title">{{'Upload Document' | translate}}</h3>
+  <div class="modal-body">
+    <!-- <div class="clr-row">
+      <div class="clr-col-12">
+        <label style="font-weight: bold;">{{'Documenttype' | translate}}</label>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12" class="clr-select-wrapper">
+        <select class="clr-select" name="doctype" [(ngModel)]="doctype">
+          <option value="idcard">ID Card</option>
+          <option value="picture">Picture</option>
+        </select>
+      </div>
+    </div> -->
+    <div class="clr-row">
+      <div class="clr-col-5">
+        <label style="font-weight: bold;">{{'Document' | translate}}</label>
+      </div>
+      <div class="clr-col-7">
+        <label class="btn btn-primary btn-outline btn-sm">
+          <input type="file" #file accept="image/jpeg,image/jpg,image/png" style="display: none;"
+            (change)="onChangeDoc($event)" accept='image/jpeg,image/jpg,image/png'>
+          {{'Browse' | translate}}<clr-icon shape="image"></clr-icon>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="!fileName" type="button" class="btn btn-success btn-sm" (click)="upload()">{{'Finish' |
+      translate}}</button>
+    <!-- <button type="button" class="btn btn-danger btn-sm" (click)="modal = false">{{'Cancel' | translate}}</button> -->
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="modalFinish" [style.height.px]="500" [clrModalClosable]="false">
+  <div class="modal-body">
+    <label style="color: red;">Please Capture</label>
   </div>
 </clr-modal>

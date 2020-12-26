@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { TranslationService } from '../translation.service';
 @Component({
   selector: 'app-langual',
   templateUrl: './langual.component.html',
@@ -9,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class LangualComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private translationService: TranslationService
   ) { }
 
   ngOnInit() {
   }
 
-  onClick(){
+  onClick(country) {
+    localStorage.setItem('country', country);
+    this.translationService.setLanguage(country);
     this.router.navigate(['/home']);
   }
 }
