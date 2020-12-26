@@ -1,6 +1,6 @@
 export const MM = {
     'Name': 'နာမည်',
-    'Lastname': 'နာမည်',
+    'Lastname': 'မျိုးနွယ်အမည်',
     'Gender': 'လိင်',
     'Male': 'အထီး',
     'Female': 'အမျိုးသမီး',
