@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit {
   telephoneBoss: any;
   year: any;
   doctype: any;
-  NationalityType: any;
+  NationalityType: any = 6;
   otp: any;
-
+  btnOtpDisabled = false;
   subDistrictCode: any;
   districtCode: any;
   provinceCode: any;
@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
   fileName: any;
 
   otpPass: any = {};
+  language: any;
 
   constructor(
     private alertService: AlertService,
@@ -58,6 +59,7 @@ export class HomeComponent implements OnInit {
     await this.getProvince();
     await this.getDistrict();
     await this.getSubDistrict();
+    this.language = localStorage.getItem('language') || 'EN';
   }
 
   async getProvince() {
@@ -111,16 +113,29 @@ export class HomeComponent implements OnInit {
   }
 
   async submit() {
-    const rs: any = await this.standardService.otp(this.telephone);
-    console.log(rs);
-    if (rs.ok) {
-      this.otpPass.telephone = rs.phone_number;
-      this.otpPass.transactionId = rs.transaction_id;
-      this.otpPass.vendor = rs.vendor;
-      this.modal = true;
-    }
+    this.modal = true;
   }
 
+  async requestOTP() {
+    this.btnOtpDisabled = true;
+    try {
+      const rs: any = await this.standardService.otp(this.telephone);
+      console.log(rs);
+      if (rs.ok) {
+        this.otpPass.telephone = rs.phone_number;
+        this.otpPass.transactionId = rs.transaction_id;
+        this.otpPass.vendor = rs.vendor;
+        // this.modal = true;
+      } else {
+        this.btnOtpDisabled = false;
+        this.alertService.error(rs.error);
+      }
+
+    } catch (error) {
+      this.btnOtpDisabled = false;
+      this.alertService.error(error);
+    }
+  }
   async confirm() {
     try {
       this.otpPass.otp = this.otp;
@@ -212,5 +227,13 @@ export class HomeComponent implements OnInit {
     this.year = null;
     this.gender = null;
     this.doctype = null;
+  }
+
+  onClickOpenCamera() {
+
+  }
+
+  onSaveFile(e){
+
   }
 }

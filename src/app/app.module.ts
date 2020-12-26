@@ -13,13 +13,16 @@ import { TranslatePipe } from './translate.pipe';
 import { LangualComponent } from './langual/langual.component';
 import { TranslateDirective } from './translate.directive';
 import { environment } from '../environments/environment';
+import { CameraComponent } from './camera/camera.component';
+import { WebcamModule } from 'ngx-webcam';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     TranslatePipe,
     LangualComponent,
-    TranslateDirective
+    TranslateDirective,
+    CameraComponent
   ],
   imports: [
     FormsModule,
@@ -27,13 +30,17 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     ClarityModule,
     LoginModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    WebcamModule
   ],
   providers: [
     TranslationService,
     { provide: 'API_URL', useValue: environment.apiUrl },
   ],
   bootstrap: [AppComponent],
-  exports: [TranslatePipe]
+  exports: [
+    TranslatePipe,
+    CameraComponent
+  ]
 })
 export class AppModule { }

@@ -1,0 +1,32 @@
+<clr-modal [(clrModalOpen)]="modalWebcam" [clrModalClosable]="false" [clrModalSize]="'xl'">
+  <h3 class="modal-title">กรุณาถ่ายรูป</h3>
+  <div class="modal-body" style="height:600px">
+    <div style="text-align:center">
+      <!-- <h1>
+        Ngx-Webcam Demo
+      </h1> -->
+
+      <div class="clr-row">
+        <div class="clr-col-6">
+          <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions" [imageQuality]="1" (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"></webcam>
+          <br />
+          <button class="actionBtn" (click)="triggerSnapshot();">ถ่ายรูป</button>
+        </div>
+        <div class="clr-col-6">
+          <div class="snapshot" *ngIf="webcamImage">
+            <img [src]="webcamImage.imageAsDataUrl" style="width: 100%;height: auto;"/>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="save()">บันทึก</button>
+    <!-- <button class="btn btn-danger" (click)="modalWebcam = false;showWebcam = false">ปิด</button> -->
+  </div>
+</clr-modal>

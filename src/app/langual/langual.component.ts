@@ -17,7 +17,7 @@ export class LangualComponent implements OnInit {
   }
 
   onClick(country) {
-    localStorage.setItem('country', country);
+    localStorage.setItem('language', country);
     this.translationService.setLanguage(country);
     this.router.navigate(['/home']);
   }
