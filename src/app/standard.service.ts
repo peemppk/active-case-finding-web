@@ -34,8 +34,8 @@ export class StandardService {
     return await this.http.post(url, data).toPromise();
   }
 
-  async savePreRegister(data, token) {
-    const url = `${this.apiUrl}/register/pre&token=${token}`;
+  async savePreRegister(data) {
+    const url = `${this.apiUrl}/register/pre`;
     return await this.http.post(url, data).toPromise();
   }
 

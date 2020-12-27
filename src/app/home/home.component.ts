@@ -7,6 +7,7 @@ import { CameraComponent } from '../camera/camera.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   idcard: any;
@@ -50,12 +51,35 @@ export class HomeComponent implements OnInit {
 
   otpPass: any = {};
   language: any;
+
+  value: any;
+  values: any;
+  codeList: any = [];
+  elementType: any = 'svg';
+  format: any = 'CODE128';
+  lineColor: any = '#000000';
+  width: any = 2;
+  height: any = 100;
+  displayValue: any = true;
+  fontOptions: any = '';
+  font: any = 'monospace';
+  textAlign: any = 'center';
+  textPosition: any = 'bottom';
+  textMargin: any = 2;
+  fontSize: any = 20;
+  background: any = '#ffffff';
+  margin: any = 10;
+  marginTop: any = 10;
+  marginBottom: any = 10;
+  marginLeft: any = 10;
+  marginRight: any = 10;
   @ViewChild('camera') camera: CameraComponent;
   constructor(
     private alertService: AlertService,
     private standardService: StandardService,
     private route: Router
   ) { }
+
 
   async ngOnInit() {
     await this.getProvince();
@@ -145,6 +169,7 @@ export class HomeComponent implements OnInit {
       this.otpPass.otp = this.otp;
       console.log(this.otpPass);
       const rs: any = await this.standardService.otpConfirm(this.otpPass);
+      localStorage.setItem('token', rs.token);
       console.log(rs);
       if (rs.ok) {
         const obj: any = {};
@@ -160,8 +185,8 @@ export class HomeComponent implements OnInit {
         obj.telephoneBoss = this.telephoneBoss;
         console.log(obj);
 
-        const userId: any = await this.standardService.savePreRegister(obj, rs.token);
-        console.log(userId);
+        const urs: any = await this.standardService.savePreRegister(obj);
+        console.log(urs);
         if (rs.ok) {
           this.modalDoc = true;
         }
@@ -204,6 +229,18 @@ export class HomeComponent implements OnInit {
 
   async upload() {
     try {
+      this.value = this.telephone;
+      this.values = this.value.split('/n');
+      this.codeList = [
+        '', 'CODE128',
+        'CODE128A', 'CODE128B', 'CODE128C',
+        'UPC', 'EAN8', 'EAN5', 'EAN2',
+        'CODE39',
+        'ITF14',
+        'MSI', 'MSI10', 'MSI11', 'MSI1010', 'MSI1110',
+        'pharmacode',
+        'codabar'
+      ];
       // const rs: any = await this.standardService.uploadFile(this.filesToUpload, this.userId);
       // if (rs.ok) {
       //   this.fileName = null;

@@ -1,8 +1,7 @@
-
 <div class="clr-row">
   <div class="clr-col-12" style="text-align: right;" (click)="onClickChangeLangue()">change languae</div>
 </div>
-<div class="card" >
+<div class="card">
   <div class="card-block" style="line-height:1.5rem">
     <!-- <div class="clr-row" >
       <div class="clr-col-4">
@@ -59,7 +58,7 @@
         <div class="clr-select-wrapper width-fit">
 
           <select class="clr-select width-fit" name="titleName" [(ngModel)]="titleName">
-            <option value="">{{'Choose_please'  | translate}}</option>
+            <option value="">{{'Choose_please' | translate}}</option>
             <option value="นาย">{{'Mr.' | translate}}</option>
             <option value="นาง">{{'Mrs.' | translate}}</option>
             <option value="นางสาว">{{'Miss' | translate}}</option>
@@ -85,8 +84,8 @@
       </div>
 
       <div class="clr-col-5">
-        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <label
-            style="color: red;">*</label></label>
+        <label style="padding: 2px;" class="clr-control-label">{{'Gender' | translate}} <span
+            class="required">*</span></label>
       </div>
 
       <div class="clr-col-7">
@@ -111,10 +110,10 @@
         <label style="font-weight: bold;">{{'Province' | translate}}</label>
       </div>
 
-      <div class="clr-col-7"  >
+      <div class="clr-col-7">
         <div class="clr-select-wrapper width-fit">
           <select class="clr-select width-fit" name="province" [(ngModel)]="provinceCode" (change)="onChangeProvince()">
-            <option value="">{{'Choose_please'  | translate}}</option>
+            <option value="">{{'Choose_please' | translate}}</option>
             <option *ngFor="let v of province" [value]="v.code">
               <span *ngIf="language=='TH'">{{v.name_th}}</span>
               <span *ngIf="language!='TH'">{{v.name_en}}</span>
@@ -127,11 +126,11 @@
       <div class="clr-col-5">
         <label style="font-weight: bold;">{{'District' | translate}}</label>
       </div>
-      <div class="clr-col-7" >
+      <div class="clr-col-7">
         <div class="clr-select-wrapper width-fit">
           <select [disabled]="!provinceCode" class="clr-select width-fit" name="district" [(ngModel)]="districtCode"
             (change)="onChangeDistrict()">
-            <option value="">{{'Choose_please'  | translate}}</option>
+            <option value="">{{'Choose_please' | translate}}</option>
             <option *ngFor="let v of districtFilter" [value]="v.code">
               <span *ngIf="language=='TH'">{{v.name_th}}</span>
               <span *ngIf="language!='TH'">{{v.name_th}}</span>
@@ -144,12 +143,12 @@
         <label style="font-weight: bold;">{{'Subdistrict' | translate}}</label>
       </div>
 
-      <div class="clr-col-7"  >
+      <div class="clr-col-7">
         <div class="clr-select-wrapper width-fit">
-          
-          <select [disabled]="!districtCode" class="clr-select  width-fit" name="subdistrict" [(ngModel)]="subDistrictCode"
-            (change)="onChangeSubDistrict()">
-            <option value="">{{'Choose_please'  | translate}}</option>
+
+          <select [disabled]="!districtCode" class="clr-select  width-fit" name="subdistrict"
+            [(ngModel)]="subDistrictCode" (change)="onChangeSubDistrict()">
+            <option value="">{{'Choose_please' | translate}}</option>
             <option *ngFor="let v of subDistrictFilter" [value]="v.code">
               <span *ngIf="language=='TH'">{{v.name_th}}</span>
               <span *ngIf="language!='TH'">{{v.name_en}}</span>
@@ -173,7 +172,7 @@
 
       <div class="clr-col-7">
         <input type="text" style="width: 100%;" placeholder="{{'Telephoneboss' | translate}}" class="clr-input"
-          [(ngModel)]="telephoneBoss"  />
+          [(ngModel)]="telephoneBoss" />
       </div>
     </div>
     <!-- <div class="clr-row">
@@ -216,7 +215,8 @@
     <div class="clr-row" style="text-align: center; padding-top: 10px;">
       <div class="clr-col-12">
         <button class="btn btn-primary btn-sm btn-outline"
-          [disabled]="!firstName || !lastName || !telephone || !gender || !NationalityType" (click)="submit()">{{'Next' |
+          [disabled]="!firstName || !lastName || !telephone || !gender || !NationalityType" (click)="submit()">{{'Next'
+          |
           translate}}</button>
       </div>
     </div>
@@ -295,7 +295,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button"  class="btn btn-primary btn-sm" [disabled]="btnOtpDisabled" (click)="requestOTP()">{{'Request_otp' |
+    <button type="button" class="btn btn-primary btn-sm" [disabled]="btnOtpDisabled"
+      (click)="requestOTP()">{{'Request_otp' |
       translate}}</button>
     <button type="button" [disabled]="!otp" class="btn btn-primary btn-sm" (click)="confirm()">{{'Next' |
       translate}}</button>
@@ -344,7 +345,22 @@
 
 <clr-modal [(clrModalOpen)]="modalFinish" [style.height.px]="500" [clrModalClosable]="false">
   <div class="modal-body">
-    <label style="color: red;">Please Capture</label>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <span style="color: red;">Please Capture</span>
+        <ngx-barcode *ngFor="let bcValue of values" [bc-element-type]="elementType" [bc-value]="bcValue"
+          [bc-format]="format" [bc-line-color]="lineColor" [bc-width]="width" [bc-height]="height"
+          [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font" [bc-text-align]="textAlign"
+          [bc-text-position]="textPosition" [bc-text-margin]="textMargin" [bc-font-size]="fontSize"
+          [bc-background]="background" [bc-margin]="margin" [bc-margin-top]="marginTop"
+          [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft" [bc-margin-right]="marginRight"></ngx-barcode>
+      </div>
+    </div>
+    <div class="clr-row">
+      <div class="clr-col-12">
+        <span style="text-align: center;">{{titleName}}{{firstName}} {{lastName}}</span>
+      </div>
+    </div>
   </div>
 </clr-modal>
 
