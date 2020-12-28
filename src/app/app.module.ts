@@ -15,6 +15,8 @@ import { TranslateDirective } from './translate.directive';
 import { environment } from '../environments/environment';
 import { CameraComponent } from './camera/camera.component';
 import { WebcamModule } from 'ngx-webcam';
+import { AuthModule } from './auth/auth.module';
+import { NgxBarcodeModule } from 'ngx-barcode';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { WebcamModule } from 'ngx-webcam';
     ClarityModule,
     LoginModule,
     BrowserAnimationsModule,
-    WebcamModule
+    WebcamModule,
+    AuthModule,
+    NgxBarcodeModule
   ],
   providers: [
     TranslationService,

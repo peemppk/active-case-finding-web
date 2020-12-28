@@ -143,5 +143,8 @@
       }
     }
   },
-  "defaultProject": "active-case-finding-web"
+  "defaultProject": "active-case-finding-web",
+  "cli": {
+    "analytics": "eaf164f4-1cfe-4db7-8b9c-05bf78a40855"
+  }
 }
