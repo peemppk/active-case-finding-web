@@ -176,7 +176,7 @@ export class HomeComponent implements OnInit {
         obj.firstName = this.firstName;
         obj.lastName = this.lastName;
         obj.titleName = this.titleName;
-        obj.birthDate = '01-01-' + this.year;
+        obj.birthDate = this.year;
         obj.telephone = this.telephone;
         obj.cid = this.idcard === undefined ? this.idforeign : this.idcard;
         obj.passport = this.passport;
