@@ -176,17 +176,22 @@ export class HomeComponent implements OnInit {
         obj.firstName = this.firstName;
         obj.lastName = this.lastName;
         obj.titleName = this.titleName;
-        obj.birthDate = this.year;
+        obj.birthDate = '01-01-' + this.year;
         obj.telephone = this.telephone;
         obj.cid = this.idcard === undefined ? this.idforeign : this.idcard;
         obj.passport = this.passport;
         obj.nationTypeId = this.NationalityType;
         obj.gender = this.gender;
         obj.telephoneBoss = this.telephoneBoss;
+        obj.province_code = this.provinceCode;
+        obj.district_code = this.districtCode;
+        obj.subdistrict_code = this.subDistrictCode;
         console.log(obj);
 
         const urs: any = await this.standardService.savePreRegister(obj);
         console.log(urs);
+
+        this.userId = urs.rows[0];
         if (rs.ok) {
           this.modalDoc = true;
         }
@@ -241,12 +246,12 @@ export class HomeComponent implements OnInit {
         'pharmacode',
         'codabar'
       ];
-      // const rs: any = await this.standardService.uploadFile(this.filesToUpload, this.userId);
-      // if (rs.ok) {
-      //   this.fileName = null;
-      //   this.filesToUpload = null;
-      //   this.alertService.success();
-      // }
+      const rs: any = await this.standardService.uploadFile(this.filesToUpload, this.userId);
+      if (rs.ok) {
+        this.fileName = null;
+        this.filesToUpload = null;
+        this.alertService.success();
+      }
       this.modalDoc = false;
       this.modalFinish = true;
     } catch (error) {

@@ -12,7 +12,7 @@ export function tokenGetter(): any {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['localhost:3000', 'co-finding.moph.go.th','api-co-finding.moph.go.th'],
+        allowedDomains: ['localhost:3000', 'co-finding.moph.go.th', '203.157.19.162'],
         disallowedRoutes: ['localhost:3000/login/']
       }
     })
